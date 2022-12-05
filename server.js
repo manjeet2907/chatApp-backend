@@ -22,12 +22,12 @@ app.use(express.json());
 // origin: "https://talk-instant.web.app",
 // origin: "https://localhost:3000",
 
-// const corsOptions = {
-//   origin: "https://talk-instant.web.app",
-//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
+const corsOptions = {
+  origin: "https://chatapp-frontend-mbfr.onrender.com",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // DB Config
 connectDb();
@@ -72,7 +72,7 @@ app.use(errorHandler);
 
 const io = new Server(server, {
   pingTimeout: 60000,
-  // cors: { origin: "https://talk-instant.web.app" },
+  cors: { origin: "https://chatapp-frontend-mbfr.onrender.com" },
 });
 
 io.on("connection", (socket) => {
